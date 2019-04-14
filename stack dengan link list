@@ -1,0 +1,98 @@
+#include<iostream>
+#define MAX_STACK_SIZE 10
+using namespace std;
+
+struct Element {
+	int top, data[MAX_STACK_SIZE];
+}stack;
+
+		void init() {
+		stack.top==-1;
+		}
+		
+		bool isEmpty() {
+			if (stack.top==-1) {
+				return 1;
+			} else {
+				return 0;
+			}
+		}
+		
+		bool isFull() {
+			if (stack.top==MAX_STACK_SIZE-1) {
+				return 1;
+			} else {
+				return 0;
+			}
+		}
+		
+		void push() {
+			if (isFull()) {
+				cout<<"Tumpukan Penuh"<<endl;
+			} else {
+				cout<<"Input Data : ";
+				cin>>stack.data[stack.top];
+				cout<<"Data "<<stack.data[stack.top]<<" masuk ke tumpukan"<<endl;
+			}
+		}
+		
+		void pop() {
+			if (isEmpty()) {
+				cout<<"Data Kosong"<<endl;
+			} else {
+				cout<<"Data "<<stack.data[stack.top]<<" sudah dihapus"<<endl;
+			}
+		}
+		
+		void PrintStackList() {
+			if (isEmpty()) {
+				cout<<"Tumpukan Kosong";
+			} else {
+				cout<<"Tumpukan : ";
+				for(int i=stack.top; i>=0; i--)
+				cout<<stack.data[i]<<((i==0) ? "" : ",");
+			}
+		}
+		
+		void getTop() {
+			if (isEmpty()) {
+				cout<<"Tumpukan Kosong";
+			} else {
+				cout<<"Element di atas sekarang yaitu : "<<stack.data[stack.top];
+				cout<<endl;
+			}
+		}
+
+
+int main() {
+	int pil;
+	
+	cout<<"Nama :Sasya salsabila janerdi"<<endl;
+	cout<<"NPM : 1867051001"<<endl;
+	
+	init() ;
+	do {
+		PrintStackList();
+			cout<<"\n\nPilihan yang tersedia :"<<endl;
+			cout<<"1. Input (Push)"<<endl;
+			cout<<"2. Hapus (Pop)"<<endl;
+			cout<<"3. Get Top"<<endl;
+			cout<<"4. View all data"<<endl;
+			cout<<"5. Keluar (Exit)"<<endl;
+			cout<<"\nMasukkan Pilihan anda : ";cin>>pil;
+			
+		switch (pil) {
+			case 1	: push();
+				  break;
+			case 2	: pop();
+				  break;
+			case 3	: getTop();
+				  break;
+			case 4	: cout<<" Terimakasih ";
+				  break;
+			default : cout<<" Maaf Pilihan Tidak Tersedia ";
+				  break;
+		} 
+	} while (pil!=4);
+	return 0;
+}
